@@ -14,7 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userLogin']) && isset(
     if ($user) {
        
         if (password_verify($password, $user->getPassword())) {
-            $message = "Bienvenue, " . $user->getEmail() . "! Content de vous revoir.";
         } else {
             
             $message = "Mot de passe incorrect. Veuillez réessayer.";
@@ -26,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userLogin']) && isset(
     $_SESSION['email'] = $user->getEmail();
 
 
-header("Location: login");
+header("Location: carousel");
 exit();
 }
 
