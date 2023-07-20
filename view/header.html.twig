@@ -21,18 +21,21 @@
 							<li class="nav-item">
 								<a class="nav-link" aria-current="page" href="carousel">Films</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="login">Compte</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="register">Créer compte</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="creation_film">Création</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="carousel" name="logout">Logout</a>
-							</li>
+							{% if session.email is defined %}
+								<li class="nav-item">
+									<a class="nav-link" href="creation_film">Création</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="log_out" name="logout">Logout</a>
+								</li>
+							{% else %}
+								<li class="nav-item">
+									<a class="nav-link" href="login">Compte</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="register">Créer compte</a>
+								</li>
+							{% endif %}
 						</ul>
 						<form action="carousel" class="d-flex" role="search" method="post">
 							<input class="form-control me-2" type="search" placeholder="Rechercher un film" aria-label="Search">
