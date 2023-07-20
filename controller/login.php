@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userLogin']) && isset(
    
     $user = $userDao->getOne($email);
     $_SESSION['email'] = $user->getEmail();
-    $_SESSION['id'] = $user->getId();
+    $_SESSION['id'] = $user->getIdUser();
     if ($user) {
        
         if (password_verify($password, $user->getPassword())) {
@@ -33,9 +33,3 @@ exit();
 echo $twig->render('login.html.twig', [
     'message' => $message,
 ]);
-
-
- 
- 
-
-?>
