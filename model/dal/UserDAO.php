@@ -20,8 +20,8 @@ class UserDAO extends Dao
     public function add($user)
     {
         $hashPassword = $this->hashPassword($user->getPassword());
-        $valeurs = ['email' => $user->getEmail(), 'password' => $hashPassword];
-        $requete = 'INSERT INTO users (email, password) VALUES (:email, :password)';
+        $valeurs = [':userName' => $user->getUserName(), 'email' => $user->getEmail(), 'password' => $hashPassword];
+        $requete = 'INSERT INTO users (userName, email, password) VALUES (:userName, :email, :password)';
         $insert = $this->BDD->prepare($requete);
         if (!$insert->execute($valeurs)) {
             return false;
