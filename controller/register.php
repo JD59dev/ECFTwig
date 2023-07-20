@@ -17,7 +17,7 @@ if ($validation) {
 }
 }
 
-echo $twig->render('new_user.html.twig', [
+echo $twig->render('register.html.twig', [
     'message' => $message,
     'user' => $user
 ]);
