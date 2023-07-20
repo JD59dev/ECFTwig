@@ -28,12 +28,21 @@
 						<form class="d-flex" role="search">
 							<input class="form-control me-2" type="search" placeholder="Rechercher un film" aria-label="Search">
 							<button class="btn btn-outline-success" type="submit">Rechercher</button>
+						</form>
 
-
+						{% if session.email is not defined %}
 							<a href="login">
 								<button>LOGIN</button>
 							</a>
-						</form>
+							<a href="register">
+								<button>Créer un compte</button>
+							</a>
+						{% else %}
+							{# voir si vous voyez le changement #}
+							<a href="log_out">
+								<button>LOGOUT</button>
+							</a>
+						{% endif %}
 					</div>
 				</div>
 			</nav>
