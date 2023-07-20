@@ -42,6 +42,10 @@ class UserDAO extends Dao
         }
         return null;
     }
+    // private function passwordMatch(){
+        // $match;
+        // if ($this->password !==$this )
+    // }
 }
     // public function delete($id)
     // {

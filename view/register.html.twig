@@ -1,8 +1,10 @@
-<h1>Identification</h1>
-<hr>
-<h3>Veuillez entrer un email et un mot de passe :</h3>
+<h1>Créer un compte</h1>
 <br>
-<form action="new_user" method="POST">
+<form action="register" method="POST">
+	<label for="username">Username</label>
+	<br>
+	<input type="text" name="newUserName" id="username">
+	<br>
 	<label for="email">E-mail</label>
 	<br>
 	<input type="email" name="newEmail" id="email">
@@ -10,9 +12,14 @@
 	<label for="password">Password</label>
 	<br>
 	<input type="password" name="newPassword" id="password">
+	<br>
+	<label for="rePassword">Password confirm</label>
+	<br>
+	<input type="password" name="rePassword" id="rePassword">
+	<br>
 
 	<br>
-	<button type="submit" name="submitnew">Créer</button>
+	<button type="submit" name="submitnew">Register</button>
 </form>
 <p>{{message}}</p>
 

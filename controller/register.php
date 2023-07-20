@@ -5,7 +5,7 @@ $user=null;
 $message="";
 if ($_SERVER["REQUEST_METHOD"] == "POST" and !empty($_POST['newEmail']) and !empty($_POST['newPassword'])) {
 
-    $user = new User(null, $_POST["newEmail"], $_POST["newPassword"]);
+    $user = new User(null,$_POST["newUserName"], $_POST["newEmail"], $_POST["newPassword"]);
 
 $validation = $userDao->add($user);
 
