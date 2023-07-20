@@ -7,8 +7,8 @@ class FilmsDAO extends Dao
     {
         $q = $this->BDD->prepare("SELECT * FROM films
         INNER JOIN roles ON films.idFilm = roles.idFilm
-        INNER JOIN acteurs ON roles.idActeur = acteurs.idActeur
-        WHERE films.titre = :titre");
+        INNER JOIN acteurs ON roles.idActeur = acteurs.idActeur");
+
         $q->execute();
         $movies = [];
 
