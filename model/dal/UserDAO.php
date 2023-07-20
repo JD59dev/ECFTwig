@@ -1,8 +1,8 @@
 <?php
 class UserDAO extends Dao
 {
-   private function hashPassword($password)
-    { 
+    private function hashPassword($password)
+    {
         return password_hash($password, PASSWORD_DEFAULT);
     }
 
@@ -11,9 +11,8 @@ class UserDAO extends Dao
         $query = $this->BDD->prepare("SELECT id, email, password FROM users ORDER BY email");
         $query->execute();
         $users = array();
-        while ($data = $query->fetch())
-        {
-        $users[] = new User($data['id'], $data['email'], $data['password']);
+        while ($data = $query->fetch()) {
+            $users[] = new User($data['id'], $data['userName'], $data['email'], $data['password']);
         }
         return ($users);
     }
@@ -24,27 +23,25 @@ class UserDAO extends Dao
         $valeurs = ['email' => $user->getEmail(), 'password' => $hashPassword];
         $requete = 'INSERT INTO users (email, password) VALUES (:email, :password)';
         $insert = $this->BDD->prepare($requete);
-        if (!$insert->execute($valeurs)) 
-        {
+        if (!$insert->execute($valeurs)) {
             return false;
-        } else 
-        {
+        } else {
             return true;
         }
-    }  
-    
+    }
+
 
     public function getOne($email)
-{
-    $query = $this->BDD->prepare('SELECT * FROM users WHERE email = :email');
-    $query->execute(array(':email' => $email));
-    $data = $query->fetch();
-    if ($data) {
-        $user = new User($data['id'], $data['email'], $data['password']);
-        return $user;
+    {
+        $query = $this->BDD->prepare('SELECT * FROM users WHERE email = :email');
+        $query->execute(array(':email' => $email));
+        $data = $query->fetch();
+        if ($data) {
+            $user = new User($data['id'], $data['userName'], $data['email'], $data['password']);
+            return $user;
+        }
+        return null;
     }
-    return null;
-}
 }
     // public function delete($id)
     // {
