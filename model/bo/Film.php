@@ -9,18 +9,18 @@ class Film
     private $affiche;
     private $annee;
 
-public function __construct($id, $titre, $realisateur, $affiche, $annee)
-{ 
-$this->setId($id);
-$this->setTitre($titre);
-$this->setRealisateur($realisateur);
-$this->setAffiche($affiche);
-$this->setAnnee($annee);
-}
+    public function __construct($id, $titre, $realisateur, $affiche, $annee)
+    {
+        $this->setId($id);
+        $this->setTitre($titre);
+        $this->setRealisateur($realisateur);
+        $this->setAffiche($affiche);
+        $this->setAnnee($annee);
+    }
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId()
     {
         return $this->id;
@@ -30,7 +30,7 @@ $this->setAnnee($annee);
      * Set the value of id
      *
      * @return  self
-     */ 
+     */
     public function setId($id)
     {
         $this->id = $id;
@@ -38,7 +38,7 @@ $this->setAnnee($annee);
 
     /**
      * Get the value of titre
-     */ 
+     */
     public function getTitre()
     {
         return $this->titre;
@@ -48,16 +48,15 @@ $this->setAnnee($annee);
      * Set the value of titre
      *
      * @return  self
-     */ 
+     */
     public function setTitre($titre)
     {
         $this->titre = $titre;
-
     }
 
     /**
      * Get the value of realisateur
-     */ 
+     */
     public function getRealisateur()
     {
         return $this->realisateur;
@@ -67,16 +66,15 @@ $this->setAnnee($annee);
      * Set the value of realisateur
      *
      * @return  self
-     */ 
+     */
     public function setRealisateur($realisateur)
     {
         $this->realisateur = $realisateur;
-
     }
 
     /**
      * Get the value of affiche
-     */ 
+     */
     public function getAffiche()
     {
         return $this->affiche;
@@ -86,16 +84,15 @@ $this->setAnnee($annee);
      * Set the value of affiche
      *
      * @return  self
-     */ 
+     */
     public function setAffiche($affiche)
     {
         $this->affiche = $affiche;
-
     }
 
     /**
      * Get the value of annee
-     */ 
+     */
     public function getAnnee()
     {
         return $this->annee;
@@ -105,10 +102,9 @@ $this->setAnnee($annee);
      * Set the value of annee
      *
      * @return  self
-     */ 
+     */
     public function setAnnee($annee)
     {
         $this->annee = $annee;
-
     }
 }

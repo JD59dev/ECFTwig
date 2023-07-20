@@ -29,7 +29,7 @@ abstract class Dao
     abstract public function add($data);
 
     //Supprimer un item
-    abstract public function delete($id);
+    //abstract public function delete($id);
 
     public function setBDD($bdd)
     {
