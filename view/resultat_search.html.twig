@@ -1,0 +1,11 @@
+<div>
+	<p>Resultat recherche :
+	</p>
+
+	{# ex pour me rappeler ce qu'il faut faire #}
+	{% if offre is not null %}
+		{{offre.getTitle}}
+		:
+		{{offre.getDescription}}
+	{% endif %}
+</div>

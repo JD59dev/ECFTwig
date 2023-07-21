@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $chercheMovie = $movieDao->searchFilm($titre);
 }
 
-echo $twig->render('header.html.twig', [ 
+echo $twig->render('resultat_search.html.twig', [ 
     'chercheMovie' => $chercheMovie
 ]);
 ?>
