@@ -48,7 +48,7 @@ class UserDAO extends Dao
         $input;
         if (empty($this->getUserName())||empty($this->getEmail())||empty($this->getPassword())||empty($this->getPwdRepeat()))
         {
-            $input=false
+            $input=false;
         }
         else{
             $input=true;
@@ -65,12 +65,32 @@ class UserDAO extends Dao
         else{
             $valid= false;
         }
-        return $valid
+        return $valid;
     }
-    // private function passwordMatch(){
-        // $match;
-        // if ($this->password !==$this )
-    // }
+    public function validEmail()
+    {
+    $valid;
+    if (filter_var($this->email, FILTER_VALIDATE_EMAIL))
+    {
+        $valid= true;
+    }
+    else{
+        $valid= false;
+    }
+    return $valid;
+    }
+    private function passwordMatch()
+    {
+        $match;
+        if ($this->getPassword() ==$this->getPwdRepeat())
+        {
+            $match=true;
+        }
+        else{
+            $match=false;
+        }
+    return $match;
+    }
 }
     // public function delete($id)
     // {
@@ -89,3 +109,4 @@ class UserDAO extends Dao
         // ]);
         // return ($query->rowCount() > 0);
     // } 
+?>
