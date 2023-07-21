@@ -1,45 +1,81 @@
 <form action="creation_film" method="POST">
-	<div class="col-7">
-		<div class="form-group col-md-6">
-			<label for="titre">Titre</label>
-			<input type="text" class="form-control" id="titre">
-		</div>
-		<div class="form-group col-md-6">
-			<label for="annee">Année</label>
-			<input type="text" class="form-control" id="annee">
-		</div>
-		<div class="col-7">
+	<div
+		class="container">
+
+		{# affiche #}
+		<div class="row">
 			<div class="form-group col-md-6">
+				<label for="titre">Titre</label>
+				<input type="text" class="form-control" id="titre">
+			</div>
+			<div class="form-group col-md-6">
+				<label for="annee">Année</label>
+				<input type="text" class="form-control" id="annee">
+			</div>
+		</div>
+
+		{# affiche #}
+		<div class="col-12">
+			<div class="form-group col-12">
 				<label for="affiche">Affiche</label>
 				<input type="text" class="form-control" id="affiche">
-
-				<div class="form-group col-md-6">
-					<label for="realisateur">Réalisateur</label>
-					<input type="text" class="form-control" id="realisateur">
-				</div>
-
-
 			</div>
-			<div class="form-row">
-				<div class="form-group col-md-6">
-					<label for="role">Rôle(s)</label>
-					<input type="text" class="form-control" id="role1" placeholder="Personnage"><br>
-					<input type="text" class="form-control" id="roleNom1" placeholder="Nom"><br>
-					<input type="text" class="form-control" id="rolePrenom1" placeholder="Prenom"><br>
+		</div>
 
 
-					<input type="text" class="form-control" id="role2" placeholder="Personnage"><br>
-					<input type="text" class="form-control" id="roleNom2" placeholder="Nom"><br>
-					<input type="text" class="form-control" id="rolePrenom2" placeholder="Prenom"><br>
+		{# realisateur #}
+		<div class="form-group col-md-6">
+			<label for="realisateur">Réalisateur</label>
+			<input type="text" class="form-control" id="realisateur">
+		</div>
 
-
-					<input type="text" class="form-control" id="role3" placeholder="Personnage"><br>
-					<input type="text" class="form-control" id="roleNom3" placeholder="Nom"><br>
-					<input type="text" class="form-control" id="rolePrenom3" placeholder="Prenom"><br>
-
+		{# rôles #}
+		<div class="form-group col-md-12 mb-3">
+			<label for="role">Rôle(s)</label>
+			<div class="row">
+				<div class="col">
+					<input type="text" class="form-control w-100" id="role1" placeholder="Personnage">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control w-100" id="roleNom1" placeholder="Nom">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control w-100" id="rolePrenom1" placeholder="Prenom">
 				</div>
 			</div>
 		</div>
-		<button type="submit" class="btn btn-primary">Créer</button>
+
+		<div class="form-group col-md-12 mb-3">
+			<div class="row">
+				<div class="col">
+					<input type="text" class="form-control w-100" id="role2" placeholder="Personnage">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control w-100" id="roleNom2" placeholder="Nom">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control w-100" id="rolePrenom2" placeholder="Prenom">
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group col-md-12 mb-3">
+			<div class="row">
+				<div class="col">
+					<input type="text" class="form-control w-100" id="role3" placeholder="Personnage">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control w-100" id="roleNom3" placeholder="Nom">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control w-100" id="rolePrenom3" placeholder="Prenom">
+				</div>
+			</div>
+		</div>
+		<div
+			class="text-center mt-4">
+			<!-- Aggiungi un margine superiore più grande per abbassare il bottone -->
+			<button type="submit" class="btn btn-primary">Créer</button>
+		</div>
 	</div>
-</form>
+</form></div>
