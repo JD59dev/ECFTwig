@@ -4,6 +4,7 @@
 	<label for="username">Username</label>
 	<br>
 	<input type="text" name="newUserName" id="username">
+
 	<br>
 	<label for="email">E-mail</label>
 	<br>
@@ -23,5 +24,56 @@
 </form>
 <p>{{message}}</p>
 
+_______________________________________________________________________________________
+
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<form action="register" method="POST">
+				<h1>Créer un compte</h1>
+
+
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input type="text" class="form-control bg-light" name="newUserName" id="username">
+					<small class="form-text text-muted">
+						<em>Username can contain any letters or numbers without spaces</em>
+					</small>
+				</div>
+
+				<div class="form-group">
+					<label for="email">E-mail</label>
+					<input type="email" class="form-control bg-light" name="newEmail" id="email" required>
+					<small class="form-text text-muted">
+						<em>Please provide your E-mail</em>
+					</small>
+				</div>
+
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" class="form-control bg-light" name="newPassword" id="password" required>
+					<small class="form-text text-muted">
+						<em>Password should be at least 4 characters</em>
+					</small>
+				</div>
+
+				<div class="form-group">
+					<label for="rePassword">Password confirm</label>
+					<input type="password" class="form-control bg-light" name="rePassword" id="rePassword" required>
+					<small class="form-text text-muted">
+						<em>Please confirm password</em>
+					</small>
+				</div>
+
+				<div class="d-flex justify-content-center">
+					<button type="submit" name="submitnew" class="btn btn-success mt-4">Register</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- Inclu
 
 <hr>

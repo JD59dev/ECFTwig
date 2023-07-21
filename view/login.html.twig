@@ -3,6 +3,39 @@
 	<input type="email" name="userLogin" placeholder="E-mail">
 	<input type="password" name="userPassword" placeholder="Mot de passe">
 	<br>
-	<button type="submit" name="submit">LOGIN</button>
+	<button type="submit" name="submit">Register</button>
 </form>
+{{message}}
+
+
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+
+
+			<form action="login" method="POST">
+
+				<div class="form-group">
+					<label for="userLogin">E-mail</label>
+					<input type="email" class="form-control" name="userLogin" id="userLogin" placeholder="E-mail" required>
+					<small class="form-text text-muted">
+						<em>Please provide your email</em>
+					</small>
+				</div>
+
+				<div class="form-group">
+					<label for="userPassword">Mot de passe</label>
+					<input type="password" class="form-control" name="userPassword" id="userPassword" placeholder="Mot de passe" required>>
+					<small class="form-text text-muted">
+						<em>Password should be at least 4 characters</em>
+					</small>
+				</div>
+
+				<div class="d-flex justify-content-center">
+					<button type="submit" name="submit" class="btn btn-success mt-4">Register</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 {{message}}
