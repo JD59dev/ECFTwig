@@ -2,60 +2,15 @@
 
 class Role
 {
-    private $idActeur;
-    private $idFilm;
     private $personnage;
     private $idRole;
-    private $test;
+    private $acteur;
 
-    public function __construct($idActeur, $idFilm, $personnage, $idRole, $test)
+    public function __construct(string $personnage, int $idRole, Acteur $acteur)
     {
-        $this->setIdActeur($idActeur);
-        $this->setIdFilm($idFilm);
         $this->setPersonnage($personnage);
         $this->setIdRole($idRole);
-        $this->setTest($test);
-    }
-
-
-    /**
-     * Get the value of idActeur
-     */
-    public function getIdActeur()
-    {
-        return $this->idActeur;
-    }
-
-    /**
-     * Set the value of idActeur
-     *
-     * @return  self
-     */
-    public function setIdActeur($idActeur)
-    {
-        $this->idActeur = $idActeur;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of idFilm
-     */
-    public function getIdFilm()
-    {
-        return $this->idFilm;
-    }
-
-    /**
-     * Set the value of idFilm
-     *
-     * @return  self
-     */
-    public function setIdFilm($idFilm)
-    {
-        $this->idFilm = $idFilm;
-
-        return $this;
+        $this->setActeur($acteur);
     }
 
     /**
@@ -99,21 +54,21 @@ class Role
     }
 
     /**
-     * Get the value of test
+     * Get the value of acteur
      */
-    public function getTest()
+    public function getActeur()
     {
-        return $this->test;
+        return $this->acteur;
     }
 
     /**
-     * Set the value of test
+     * Set the value of acteur
      *
      * @return  self
      */
-    public function setTest($test)
+    public function setActeur($acteur)
     {
-        $this->test = $test;
+        $this->acteur = $acteur;
 
         return $this;
     }

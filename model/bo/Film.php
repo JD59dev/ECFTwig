@@ -8,8 +8,9 @@ class Film
     private $realisateur;
     private $affiche;
     private $annee;
+    private $roles;
 
-    public function __construct($id, $titre, $realisateur, $affiche, $annee)
+    public function __construct(int $id, string $titre, string $realisateur, string $affiche, int $annee, $roles = [])
     {
         $this->setId($id);
         $this->setTitre($titre);
@@ -106,5 +107,25 @@ class Film
     public function setAnnee($annee)
     {
         $this->annee = $annee;
+    }
+
+    /**
+     * Get the value of roles
+     */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    /**
+     * Set the value of roles
+     *
+     * @return  self
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
 }

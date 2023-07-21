@@ -5,7 +5,7 @@ class FilmsDAO extends Dao
     // Affichage de tous les films réalisés par les réalisateurs et acteurs concernés
     public function getAll()
     {
-        $q = $this->BDD->prepare("SELECT DISTINCT films.idFilm, titre, realisateur, affiche, annee
+        $q = $this->BDD->prepare("SELECT films.idFilm, titre, realisateur, affiche, annee, roles.personnage, acteurs.nom, acteurs.prenom
         FROM films
         INNER JOIN roles ON films.idFilm = roles.idFilm
         INNER JOIN acteurs ON roles.idActeur = acteurs.idActeur
@@ -15,22 +15,9 @@ class FilmsDAO extends Dao
         $movies = [];
 
         while ($data = $q->fetch()) {
-            $movies[] = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
+            $movies[] = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $data['personnage']);
         }
         return ($movies);
-    }
-
-    public function getIdFilm()
-    {
-        $q = $this->BDD->prepare('SELECT idFilm FROM films ORDER BY idFilm ASC');
-
-        $q->execute();
-        $idMovies = [];
-
-        while ($data = $q->fetch()) {
-            $idMovies[] = new Film($data['idFilm'], null, null, null, null, null);
-        }
-        return ($idMovies);
     }
 
     // Ajout d'un film
@@ -56,7 +43,7 @@ class FilmsDAO extends Dao
         $q = $this->BDD->prepare("SELECT * FROM films WHERE titre = :titre");
         $q->execute([":titre" => $titre]);
         $data = $q->fetch(); // Récupération des résultats
-        $movie = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']); // Stockage dans la classe Film
+        $movie = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $data['roles']); // Stockage dans la classe Film
 
         return ($movie);
     }
@@ -64,24 +51,23 @@ class FilmsDAO extends Dao
     // public function searchFilm($titre)
     // {
 
-        // $q = $this->BDD->prepare("SELECT * FROM films WHERE titre LIKE :titre");
-        // $q->execute([":titre" => $titre]);
-        // $data = $q->fetch();
-        // $movie = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
+    // $q = $this->BDD->prepare("SELECT * FROM films WHERE titre LIKE :titre");
+    // $q->execute([":titre" => $titre]);
+    // $data = $q->fetch();
+    // $movie = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
 
-        // return ($movie);
+    // return ($movie);
     // }
     public function searchFilm($titre)
-{
-    $q = $this->BDD->prepare("SELECT * FROM films WHERE titre LIKE :titre");
-    $q->execute([":titre" => "%$titre%"]);
+    {
+        $q = $this->BDD->prepare("SELECT * FROM films WHERE titre LIKE :titre");
+        $q->execute([":titre" => "%$titre%"]);
 
-    $movies = [];
-    while ($data = $q->fetch()) {
-        $movies[] = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
+        $movies = [];
+        while ($data = $q->fetch()) {
+            $movies[] = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $data['roles']);
+        }
+
+        return $movies;
     }
-
-    return $movies;
-}
-
 }
