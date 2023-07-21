@@ -42,6 +42,31 @@ class UserDAO extends Dao
         }
         return null;
     }
+
+    public function emptyInputRegister()
+    {
+        $input;
+        if (empty($this->getUserName())||empty($this->getEmail())||empty($this->getPassword())||empty($this->getPwdRepeat()))
+        {
+            $input=false
+        }
+        else{
+            $input=true;
+        }
+        return $input;
+    }
+    public function validUserName()
+    {
+        $valid;
+        if (preg_match("/^[a-zA-Z0-9]*$/",$this->getUserName))
+        {
+            $valid= true;
+        }
+        else{
+            $valid= false;
+        }
+        return $valid
+    }
     // private function passwordMatch(){
         // $match;
         // if ($this->password !==$this )

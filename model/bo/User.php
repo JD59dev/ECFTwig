@@ -6,15 +6,27 @@ class User {
     private $userName;
     private $email;
     private $password;
+    private $pwdRepeat;
 
-public function __construct($idUser, $userName, $email, $password) 
+
+public function __construct($idUser, $userName, $email, $password, $pwdRepeat=null) 
 {
     $this->setIdUser($idUser);
     $this->setUserName($userName);
     $this->setEmail($email);
     $this->setPassword($password);
+    $this->setpwdRepeat($pwdRepeat);
 }
 
+public function getPwdRepeat()
+{
+    return $this->pwdRepeat;
+}
+
+public function setPwdRepeat($pwdRepeat)
+{
+    $this->pwdRepeat=$pwdRepeat;
+}
     /**
      * Get the value of idUser
      */ 

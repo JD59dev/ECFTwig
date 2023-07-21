@@ -61,14 +61,27 @@ class FilmsDAO extends Dao
         return ($movie);
     }
 
+    // public function searchFilm($titre)
+    // {
+
+        // $q = $this->BDD->prepare("SELECT * FROM films WHERE titre LIKE :titre");
+        // $q->execute([":titre" => $titre]);
+        // $data = $q->fetch();
+        // $movie = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
+
+        // return ($movie);
+    // }
     public function searchFilm($titre)
-    {
+{
+    $q = $this->BDD->prepare("SELECT * FROM films WHERE titre LIKE :titre");
+    $q->execute([":titre" => "%$titre%"]);
 
-        $q = $this->BDD->prepare("SELECT * FROM films WHERE titre LIKE :titre");
-        $q->execute([":titre" => $titre]);
-        $data = $q->fetch();
-        $movie = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
-
-        return ($movie);
+    $movies = [];
+    while ($data = $q->fetch()) {
+        $movies[] = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
     }
+
+    return $movies;
+}
+
 }
