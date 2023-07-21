@@ -8,16 +8,28 @@
 				{% if item.getId not in newList %}
 					<div class="carousel-item {{ loop.first ? 'active' : '' }}">
 						<div class="d-flex align-items-center justify-content-around">
-							<p>
-								<h1 class="mb-3 animated slideInDown">
-									{{item.getId}}
-									-
-									{{ item.getTitre }}</h1>
-								Réalisé en
-								{{item.getAnnee}}
-								par
-								{{item.getRealisateur}}
-							</p>
+							<ul class="list-unstyled">
+								<li>
+									<h1 class="mb-3 animated slideInDown">
+										{{item.getId}}
+										-
+										{{ item.getTitre }}</h1>
+								</li>
+								<li>
+									Réalisé en
+									{{item.getAnnee}}
+									par
+									{{item.getRealisateur}}
+								</li>
+								<li>avec
+									{{ item.getPrenom }}
+									{{ item.getNom }}
+									dans le rôle de
+									{{ item.getPersonnage }}</li>
+
+
+							</ul>
+
 							<img src="{{item.getAffiche}}" class="w-25" alt="{{item.getTitre}}">
 						</div>
 						{% set newList = newList|merge([item.getId]) %}

@@ -1,75 +1,34 @@
 <?php
 
-class Acteur {
-
-private $idActeur;
-private $nom;
-private $prenom;
-
-
-public function __construct($idActeur, $nom, $prenom) 
+class Acteur
 {
 
-    $this->setIdActeur($idActeur);
-    $this->setNom($nom);
-    $this->setPrenom($prenom);
+    private $idActeur;
+    private $nom;
+    private $prenom;
 
-}
 
-/**
- * Get the value of idActeur
- */ 
-public function getIdActeur()
-{
-return $this->idActeur;
-}
+    public function __construct(int $idActeur = null, string $nom, string $prenom)
+    {
 
-/**
- * Set the value of idActeur
- *
- * @return  self
- */ 
-public function setIdActeur($idActeur)
-{
-$this->idActeur = $idActeur;
+        $this->setIdActeur($idActeur);
+    }
 
-}
+    /**
+     * Get the value of idActeur
+     */
+    public function getIdActeur()
+    {
+        return $this->idActeur;
+    }
 
-/**
- * Get the value of nom
- */ 
-public function getNom()
-{
-return $this->nom;
-}
-
-/**
- * Set the value of nom
- *
- * @return  self
- */ 
-public function setNom($nom)
-{
-$this->nom = $nom;
-
-}
-
-/**
- * Get the value of prenom
- */ 
-public function getPrenom()
-{
-return $this->prenom;
-}
-
-/**
- * Set the value of prenom
- *
- * @return  self
- */ 
-public function setPrenom($prenom)
-{
-$this->prenom = $prenom;
-
-}
+    /**
+     * Set the value of idActeur
+     *
+     * @return  self
+     */
+    public function setIdActeur($idActeur)
+    {
+        $this->idActeur = $idActeur;
+    }
 }

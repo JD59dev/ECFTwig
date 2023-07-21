@@ -15,7 +15,7 @@ class FilmsDAO extends Dao
         $movies = [];
 
         while ($data = $q->fetch()) {
-            $movies[] = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $data['personnage']);
+            $movies[] = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $data[new Role($data['personnage'], $data['nom'], $data['prenom'])]);
         }
         return ($movies);
     }

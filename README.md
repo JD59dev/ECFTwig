@@ -10,9 +10,3 @@ Dans la navbar, si le session N'EST PAS définie, afficher les rubriques connexi
 - Mara : Classes BO Film et User, page Twig register.html.twig et son controller.
 
 - Jason : Connexion à la BDD, mise en place la classe abstraite DAO, création de la classe FilmsDAO et création des controllers et pages Twig
-
-TODO (Jason) : L'affichage de l'affiche ne marche pas correctement. 
-Colonne de gauche -> 
-- id - titre, 
-- suivi de l'année de réalisation et du nom du réalisateur,
-- liste des acteurs et de leur rôle
