@@ -3,60 +3,70 @@
 class FilmsDAO extends Dao
 {
     // Affichage de tous les films réalisés par les réalisateurs et acteurs concernés
-    public function getAll()
+    public function getAll($search)
     {
-        $q = $this->BDD->prepare("SELECT films.idFilm, titre, realisateur, affiche, annee, roles.personnage, acteurs.nom, acteurs.prenom
-        FROM films
-        INNER JOIN roles ON films.idFilm = roles.idFilm
-        INNER JOIN acteurs ON roles.idActeur = acteurs.idActeur
-        ORDER BY films.idFilm ASC");
+        try {
+            $data = null;
 
-        $q->execute();
-        $movies = [];
+            $q = $this->BDD->prepare("SELECT films.idFilm, titre, realisateur, affiche, annee, roles.personnage, acteurs.nom, acteurs.prenom
+            FROM films
+            INNER JOIN roles ON films.idFilm = roles.idFilm
+            INNER JOIN acteurs ON roles.idActeur = acteurs.idActeur
+            WHERE titre LIKE :titre
+            ORDER BY films.idFilm ASC");
 
-        while ($data = $q->fetch()) {
-            $movies[] = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $data[new Role($data['personnage'], $data['nom'], $data['prenom'])]);
+            $q->execute([':titre' => "%" . $search . "%"]);
+            $movies = [];
+            $addRole;
+
+            while ($data = $q->fetch()) {
+                $acteurData = new Acteur($data['idActeur'], $data['nom'], $data['prenom']);
+                $roleData = new Role($data['personnage'], $acteurData);
+
+                $movies[] = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $addRole);
+
+                $addRole->addRole($roleData);
+            }
+        } catch (Exception $err) {
+            return "ERROR : " . $err->getMessage();
         }
         return ($movies);
     }
 
+
     // Ajout d'un film
     public function add($data)
     {
-        $values = ['titre' => $data->getTitre(), 'realisateur' => $data->getRealisateur(), 'affiche' => $data->getAffiche(), 'annee' => $data->getAnnee()]; // Initialisation des valeurs pour la requête
+        try {
+            $values = ['titre' => $data->getTitre(), 'realisateur' => $data->getRealisateur(), 'affiche' => $data->getAffiche(), 'annee' => $data->getAnnee()]; // Initialisation des valeurs pour la requête
 
-        $q = "INSERT INTO films (titre, realisateur, affiche, annee) 
-        VALUES (:titre, :realisateur, :affiche, :annee)"; // Initialisation de la requête
+            $q = "INSERT INTO films (titre, realisateur, affiche, annee) 
+            VALUES (:titre, :realisateur, :affiche, :annee)"; // Initialisation de la requête
 
-        $insert = $this->BDD->prepare($q); // Exécution de la requête
+            $insert = $this->BDD->prepare($q); // Exécution de la requête
 
-        if (!$insert->execute($values)) {
-            return false;
-        } else {
-            return true;
+            if (!$insert->execute($values)) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (Exception $err) {
+            return "ERROR : " . $err->getMessage();
         }
     }
 
     // Recherche d'un film
     public function getOne($titre)
     {
-        $q = $this->BDD->prepare("SELECT * FROM films WHERE titre = :titre");
-        $q->execute([":titre" => $titre]);
-        $data = $q->fetch(); // Récupération des résultats
-        $movie = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $data['roles']); // Stockage dans la classe Film
-
-        return ($movie);
-    }
-    public function searchFilm($titre)
-    {
-        $q = $this->BDD->prepare("SELECT * FROM films WHERE titre LIKE :titre");
-        $q->execute([":titre" => "%$titre%"]);
-
-        $movies = [];
-        while ($data = $q->fetch()) {
-            $movies[] = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $data['roles']);
+        try {
+            $q = $this->BDD->prepare("SELECT * FROM films WHERE titre = :titre");
+            $q->execute([":titre" => $titre]);
+            $data = $q->fetch(); // Récupération des résultats
+            $movie = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $data['roles']); // Stockage dans la classe Film
+        } catch (Exception $err) {
+            return "ERROR : " . $err->getMessage();
         }
 
-        return $movies;
+        return ($movie);
     }
 }

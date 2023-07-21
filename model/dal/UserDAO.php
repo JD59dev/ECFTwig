@@ -6,7 +6,7 @@ class UserDAO extends Dao
         return password_hash($password, PASSWORD_DEFAULT);
     }
 
-    public function getAll()
+    public function getAll($search)
     {
         $query = $this->BDD->prepare("SELECT id, email, password FROM users ORDER BY email");
         $query->execute();
@@ -46,50 +46,42 @@ class UserDAO extends Dao
     public function emptyInputRegister()
     {
         $input;
-        if (empty($this->getUserName())||empty($this->getEmail())||empty($this->getPassword())||empty($this->getPwdRepeat()))
-        {
-            $input=false;
-        }
-        else{
-            $input=true;
+        if (empty($this->getUserName()) || empty($this->getEmail()) || empty($this->getPassword()) || empty($this->getPwdRepeat())) {
+            $input = false;
+        } else {
+            $input = true;
         }
         return $input;
     }
     public function validUserName()
     {
         $valid;
-        if (preg_match("/^[a-zA-Z0-9]*$/",$this->getUserName))
-        {
-            $valid= true;
-        }
-        else{
-            $valid= false;
+        if (preg_match("/^[a-zA-Z0-9]*$/", $this->getUserName())) {
+            $valid = true;
+        } else {
+            $valid = false;
         }
         return $valid;
     }
     public function validEmail()
     {
-    $valid;
-    if (filter_var($this->email, FILTER_VALIDATE_EMAIL))
-    {
-        $valid= true;
-    }
-    else{
-        $valid= false;
-    }
-    return $valid;
+        $valid;
+        if (filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            $valid = true;
+        } else {
+            $valid = false;
+        }
+        return $valid;
     }
     private function passwordMatch()
     {
         $match;
-        if ($this->getPassword() ==$this->getPwdRepeat())
-        {
-            $match=true;
+        if ($this->getPassword() == $this->getPwdRepeat()) {
+            $match = true;
+        } else {
+            $match = false;
         }
-        else{
-            $match=false;
-        }
-    return $match;
+        return $match;
     }
 }
     // public function delete($id)
@@ -109,4 +101,3 @@ class UserDAO extends Dao
         // ]);
         // return ($query->rowCount() > 0);
     // } 
-?>

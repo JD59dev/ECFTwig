@@ -8,10 +8,11 @@ class Acteur
     private $prenom;
 
 
-    public function __construct(int $idActeur = null, string $nom, string $prenom)
+    public function __construct(int $idActeur, string $nom, string $prenom)
     {
-
         $this->setIdActeur($idActeur);
+        $this->setNom($nom);
+        $this->setPrenom($prenom);
     }
 
     /**
@@ -30,5 +31,45 @@ class Acteur
     public function setIdActeur($idActeur)
     {
         $this->idActeur = $idActeur;
+    }
+
+    /**
+     * Get the value of nom
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set the value of nom
+     *
+     * @return  self
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of prenom
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set the value of prenom
+     *
+     * @return  self
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
     }
 }

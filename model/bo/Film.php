@@ -8,17 +8,29 @@ class Film
     private $realisateur;
     private $affiche;
     private $annee;
-    private $acteur;
+    private $roles = [];
 
-    public function __construct(int $id, string $titre, string $realisateur, string $affiche, int $annee, $acteur = [])
+    public function __construct(int $id, string $titre, string $realisateur, string $affiche, int $annee, array $roles = null)
     {
         $this->setId($id);
         $this->setTitre($titre);
         $this->setRealisateur($realisateur);
         $this->setAffiche($affiche);
         $this->setAnnee($annee);
-        $this->setActeur($acteur);
+        $this->$roles = [];
     }
+
+    // Méthodes
+    public function addRole(Role $role)
+    {
+        if ($this->roles >= 1) {
+            $this->roles[] =  $role;
+        } else {
+            throw new Exception("No role found");
+        }
+    }
+
+    // GETTERS & SETTERS
 
     /**
      * Get the value of id
@@ -111,21 +123,21 @@ class Film
     }
 
     /**
-     * Get the value of acteur
+     * Get the value of roles
      */
-    public function getActeur()
+    public function getRoles()
     {
-        return $this->acteur;
+        return $this->roles;
     }
 
     /**
-     * Set the value of acteur
+     * Set the value of roles
      *
      * @return  self
      */
-    public function setActeur($acteur)
+    public function setRoles($roles)
     {
-        $this->acteur = $acteur;
+        $this->roles = $roles;
 
         return $this;
     }

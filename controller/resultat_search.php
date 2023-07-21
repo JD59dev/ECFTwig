@@ -17,10 +17,9 @@ $chercheMovie = [];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['titre'])) {
     $titre = $_POST['titre'];
-    $chercheMovie = $filmDao->searchFilm($titre);
+    $chercheMovie = $filmDao->getAll($titre);
 }
 
-echo $twig->render('resultat_search.html.twig', [ 
+echo $twig->render('resultat_search.html.twig', [
     'chercheMovie' => $chercheMovie
 ]);
-
