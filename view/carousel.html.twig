@@ -24,13 +24,14 @@
 								{% for role in film.getRoles() %}
 
 									<li>avec
-										{{ role.getActeur().getPrenom() }}
-										{{ role.getActeur().getNom() }}
+										{{ role.getActeur.getPrenom }}
+										{{ role.getActeur.getNom }}
 										dans le rôle de
 										{{ role.getPersonnage }}</li>
 								{% endfor %}
 							</ul>
-
+							{# ici on doit aller adans un objet qui est déja sdans un autre. Il faut faire un for each de chaque occurence et aller utiliser le getter 
+							de l'objet avant d'aller chercher le getter des infos dans ce dit objet. donc on peux faire des choses comme cela {{ role.getActeur().getNom() }}#}
 							<img src="{{film.getAffiche}}" class="w-25" alt="{{film.getTitre}}">
 						</div>
 						{% set newList = newList|merge([film.getId]) %}
