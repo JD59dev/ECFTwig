@@ -1,6 +1,6 @@
 <?php
 
-class RoleDAO extends Dao
+class ActeurDAO extends Dao
 {
 
     public function getAll($search)
@@ -9,8 +9,8 @@ class RoleDAO extends Dao
 
     public function add($data)
     {
-        $valeurs = ['personnage' => $data->getPersonnage(), 'acteur' => $data->getActeur()];
-        $requete = 'INSERT INTO roles (personnage, acteur) VALUES (:personnage , :acteur)';
+        $valeurs = ['nom' => $data->getNom(), 'prenom' => $data->getPrenom()];
+        $requete = 'INSERT INTO acteur (nom, prenom) VALUES (:nom , :prenom)';
         $insert = $this->BDD->prepare($requete);
         if (!$insert->execute($valeurs)) {
             return false;

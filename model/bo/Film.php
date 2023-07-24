@@ -17,7 +17,7 @@ class Film
         $this->setRealisateur($realisateur);
         $this->setAffiche($affiche);
         $this->setAnnee($annee);
-        $this->$roles = [];
+        $this->roles = [];
     }
 
     // Méthodes

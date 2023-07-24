@@ -1,14 +1,15 @@
 <?php
-
 class FilmsDAO extends Dao
 {
+    // ...
+
     // Affichage de tous les films réalisés par les réalisateurs et acteurs concernés
     public function getAll($search)
     {
         try {
             $data = null;
 
-            $q = $this->BDD->prepare("SELECT films.idFilm, titre, realisateur, affiche, annee, roles.personnage, acteurs.nom, acteurs.prenom
+            $q = $this->BDD->prepare("SELECT films.idFilm, titre, realisateur, affiche, annee, roles.personnage, acteurs.nom, acteurs.prenom, acteurs.idActeur
             FROM films
             INNER JOIN roles ON films.idFilm = roles.idFilm
             INNER JOIN acteurs ON roles.idActeur = acteurs.idActeur
@@ -17,23 +18,29 @@ class FilmsDAO extends Dao
 
             $q->execute([':titre' => "%" . $search . "%"]);
             $movies = [];
-            $addRole;
-
+          
             while ($data = $q->fetch()) {
+       
                 $acteurData = new Acteur($data['idActeur'], $data['nom'], $data['prenom']);
-                $roleData = new Role($data['personnage'], $acteurData);
 
-                $movies[] = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $addRole);
-
-                $addRole->addRole($roleData);
+                $roleData = new Role($data['personnage'], $acteurData);  
+                if (!isset($movies[$data['idFilm']])) {
+                    $movies[$data['idFilm']] = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
+                }
+                $movies[$data['idFilm']]->addRole($roleData);
+                // il fallait utiliser les capacités d'un tableau associatif pour faire des lien key=value. ici on utilise la cles $data['idFilm'] 
+                // comme cles pour acceder au element du tableau. du coup chaque objet Film de ce tableau a pour cles l'id du  dit objet. a present 
+                // le tableau a des cles et des valeurs par données et donc on peut les sortir avec le vardump  dans les controllers qui utilise la methode
             }
+                
+            
         } catch (Exception $err) {
             return "ERROR : " . $err->getMessage();
         }
-        return ($movies);
+        return array_values($movies);
+        // array_values ne fait que retourner les valeurs du tableau associatif dans un nouveau tableau indexé. on prend le tableau $movies
+        // qui contient les objets films et retourne un tableau indexé contenant seulement les objets films et pas les cles [$data['idFilm']]
     }
-
-
     // Ajout d'un film
     public function add($data)
     {
