@@ -1,0 +1,6 @@
+.carousel-item img {
+    object-fit: contain;
+    width: 25%;
+    border-radius: 5px;
+    box-shadow: 0px -1px 40px 5px rgba(0, 0, 0, 0.31);
+}
