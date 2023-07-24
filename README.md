@@ -11,5 +11,4 @@ Dans la navbar, si le session N'EST PAS définie, afficher les rubriques connexi
 
 - Jason : Connexion à la BDD, mise en place la classe abstraite DAO, création de la classe FilmsDAO et création des controllers et pages Twig
 
-TODO : -Finir la recherche d'un titre de film
--Finir l'insertion d'un film
+TODO :-Finir l'insertion d'un film
