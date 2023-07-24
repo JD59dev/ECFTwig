@@ -13,17 +13,17 @@ class FilmsDAO extends Dao
             FROM films
             INNER JOIN roles ON films.idFilm = roles.idFilm
             INNER JOIN acteurs ON roles.idActeur = acteurs.idActeur
-            WHERE LOWER(titre) LIKE :titre
+            WHERE LOWER(titre) LIKE LOWER(:titre)
             ORDER BY films.idFilm ASC");
 
             $q->execute([':titre' => "%" . $search . "%"]);
             $movies = [];
-          
+
             while ($data = $q->fetch()) {
-       
+
                 $acteurData = new Acteur($data['idActeur'], $data['nom'], $data['prenom']);
 
-                $roleData = new Role($data['personnage'], $acteurData);  
+                $roleData = new Role($data['personnage'], $acteurData);
                 if (!isset($movies[$data['idFilm']])) {
                     $movies[$data['idFilm']] = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
                 }
@@ -32,8 +32,6 @@ class FilmsDAO extends Dao
                 // comme cles pour acceder au element du tableau. du coup chaque objet Film de ce tableau a pour cles l'id du  dit objet. a present 
                 // le tableau a des cles et des valeurs par données et donc on peut les sortir avec le vardump  dans les controllers qui utilise la methode
             }
-                
-            
         } catch (Exception $err) {
             return "ERROR : " . $err->getMessage();
         }
