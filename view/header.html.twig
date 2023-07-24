@@ -28,7 +28,9 @@
 									<a class="nav-link" href="creation_film">Création</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="log_out" name="logout">Logout</a>
+									<button class="btn btn-outline-light logout-btn">
+										<a class="nav-link" href="log_out" name="logout">Logout</a>
+									</button>
 								</li>
 							{% else %}
 								<li class="nav-item">
@@ -47,10 +49,10 @@
 				</div>
 			</nav>
 			<div>
-				{% if session.userName is defined%}
-					<p>Bienvenue dans notre Médiathèque " .
+				{% if session.userName is defined %}
+					<p>Bienvenue dans notre Médiathèque,
 						{{session.userName}}
-						.
+						!
 					</p>
 				{% else %}
 					<p class='text-primary'>Connectez-vous pour créer des films.</p>

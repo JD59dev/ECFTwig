@@ -1,3 +1,17 @@
+/*HEADER*/
+.logout-btn {
+    padding: 2px 5px;
+}
+
+.logout-btn a {
+    color: white;
+    padding: 5px 10px;
+}
+
+.logout-btn a:hover {
+    color: black;
+}
+
 .carousel-item img {
     object-fit: contain;
     width: 25%;
