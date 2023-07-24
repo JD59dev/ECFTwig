@@ -12,7 +12,7 @@ try {
 } catch (Exception $err) {
     $msg = "ERROR : " . $err->getMessage();
 }
-//var_dump($listFilm);
+// var_dump($listFilm);
 echo $twig->render('carousel.html.twig', [
     'listFilm' => $listFilm,
     'listActeur' => $listActeur,

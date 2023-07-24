@@ -23,7 +23,7 @@ class Film
     // Méthodes
     public function addRole(Role $role)
     {
-        if ($this->roles >= 1) {
+        if ($this->roles !==null ) {
             $this->roles[] =  $role;
         } else {
             throw new Exception("No role found");
