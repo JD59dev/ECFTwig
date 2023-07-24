@@ -6,7 +6,7 @@
 			{% set newList = [] %}
 			{% for film in listFilm %}
 				{% if film.getId not in newList %}
-					<div class="carousel-item {{ loop.first ? 'active' : '' }}">
+					<div class="carousel-item {{ loop.first ? 'active' : '' }}" data-bs-interval="3000">
 						<div class="d-flex align-items-center justify-content-around">
 							<ul class="list-unstyled">
 								<li>
@@ -17,21 +17,21 @@
 								</li>
 								<li>
 									Réalisé en
-									{{film.getAnnee}}
+									<strong>{{film.getAnnee}}</strong>
 									par
-									{{film.getRealisateur}}
+									<strong>{{film.getRealisateur}}</strong>
 								</li>
 								{% for role in film.getRoles() %}
 
 									<li>avec
-										{{ role.getActeur.getPrenom }}
-										{{ role.getActeur.getNom }}
+										<span class="fst-italic text-decoration-underline">{{ role.getActeur.getPrenom }}
+											{{ role.getActeur.getNom }}</span>
 										dans le rôle de
-										{{ role.getPersonnage }}</li>
+										<strong>{{ role.getPersonnage }}</strong>
+									</li>
 								{% endfor %}
 							</ul>
-							{# ici on doit aller adans un objet qui est déja sdans un autre. Il faut faire un for each de chaque occurence et aller utiliser le getter 
-																																			de l'objet avant d'aller chercher le getter des infos dans ce dit objet. donc on peux faire des choses comme cela {{ role.getActeur().getNom() }}#}
+							{# ici on doit aller adans un objet qui est déja sdans un autre. Il faut faire un for each de chaque occurence et aller utiliser le getter de l'objet avant d'aller chercher le getter des infos dans ce dit objet. donc on peux faire des choses comme cela {{ role.getActeur().getNom() }}#}
 							<img src="{{film.getAffiche}}" class="w-25" alt="{{film.getTitre}}">
 						</div>
 						{% set newList = newList|merge([film.getId]) %}
@@ -42,14 +42,19 @@
 			{% endfor %}
 
 		</div>
-		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Next</span>
-		</button>
+		<div class="text-center">
+
+			<button class="btn btn-outline-dark shadow-hover" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+				<span aria-hidden="true"></span>
+				<span>Previous</span>
+			</button>
+			<span class="mx-3"></span>
+			<button class="btn btn-outline-dark shadow-hover" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+				<span aria-hidden="true"></span>
+				<span>Next</span>
+			</button>
+
+		</div>
 	</div>
 
 </div>
