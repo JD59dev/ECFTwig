@@ -1,4 +1,4 @@
-<form action="creation_film" method="POST">
+name<form action="creation_film" method="POST">
 	<div
 		class="container">
 
@@ -6,11 +6,11 @@
 		<div class="row">
 			<div class="form-group col-md-6">
 				<label for="titre">Titre</label>
-				<input type="text" class="form-control" id="titre">
+				<input type="text" class="form-control" name="titre">
 			</div>
 			<div class="form-group col-md-6">
 				<label for="annee">Année</label>
-				<input type="text" class="form-control" id="annee">
+				<input type="text" class="form-control" name="annee">
 			</div>
 		</div>
 
@@ -18,7 +18,7 @@
 		<div class="col-12">
 			<div class="form-group col-12">
 				<label for="affiche">Affiche</label>
-				<input type="text" class="form-control" id="affiche">
+				<input type="text" class="form-control" name="affiche">
 			</div>
 		</div>
 
@@ -26,7 +26,7 @@
 		{# realisateur #}
 		<div class="form-group col-md-6">
 			<label for="realisateur">Réalisateur</label>
-			<input type="text" class="form-control" id="realisateur">
+			<input type="text" class="form-control" name="realisateur">
 		</div>
 
 		{# rôles #}
@@ -34,27 +34,13 @@
 			<label for="role">Rôle(s)</label>
 			<div class="row">
 				<div class="col">
-					<input type="text" class="form-control w-100" id="role1" placeholder="Personnage">
+					<input type="text" class="form-control w-100" name="role" placeholder="Personnage">
 				</div>
 				<div class="col">
-					<input type="text" class="form-control w-100" id="roleNom1" placeholder="Nom">
+					<input type="text" class="form-control w-100" name="nom" placeholder="Nom">
 				</div>
 				<div class="col">
-					<input type="text" class="form-control w-100" id="rolePrenom1" placeholder="Prenom">
-				</div>
-			</div>
-		</div>
-
-		<div class="form-group col-md-12 mb-3">
-			<div class="row">
-				<div class="col">
-					<input type="text" class="form-control w-100" id="role2" placeholder="Personnage">
-				</div>
-				<div class="col">
-					<input type="text" class="form-control w-100" id="roleNom2" placeholder="Nom">
-				</div>
-				<div class="col">
-					<input type="text" class="form-control w-100" id="rolePrenom2" placeholder="Prenom">
+					<input type="text" class="form-control w-100" name="prenom" placeholder="Prenom">
 				</div>
 			</div>
 		</div>
@@ -62,13 +48,27 @@
 		<div class="form-group col-md-12 mb-3">
 			<div class="row">
 				<div class="col">
-					<input type="text" class="form-control w-100" id="role3" placeholder="Personnage">
+					<input type="text" class="form-control w-100" name="role" placeholder="Personnage">
 				</div>
 				<div class="col">
-					<input type="text" class="form-control w-100" id="roleNom3" placeholder="Nom">
+					<input type="text" class="form-control w-100" name="nom" placeholder="Nom">
 				</div>
 				<div class="col">
-					<input type="text" class="form-control w-100" id="rolePrenom3" placeholder="Prenom">
+					<input type="text" class="form-control w-100" name="prenom" placeholder="Prenom">
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group col-md-12 mb-3">
+			<div class="row">
+				<div class="col">
+					<input type="text" class="form-control w-100" name="role" placeholder="Personnage">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control w-100" name="nom" placeholder="Nom">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control w-100" name="prenom" placeholder="Prenom">
 				</div>
 			</div>
 		</div>
