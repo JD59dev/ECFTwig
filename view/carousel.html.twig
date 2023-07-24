@@ -4,35 +4,36 @@
 	<div id="carouselExample" class="carousel slide">
 		<div class="carousel-inner">
 			{% set newList = [] %}
-			{% for item in listFilm %}
-				{% if item.getId not in newList %}
+			{% for film in listFilm %}
+				{% if film.getId not in newList %}
 					<div class="carousel-item {{ loop.first ? 'active' : '' }}">
 						<div class="d-flex align-items-center justify-content-around">
 							<ul class="list-unstyled">
 								<li>
 									<h1 class="mb-3 animated slideInDown">
-										{{item.getId}}
+										{{film.getId}}
 										-
-										{{ item.getTitre }}</h1>
+										{{ film.getTitre }}</h1>
 								</li>
 								<li>
 									Réalisé en
-									{{item.getAnnee}}
+									{{film.getAnnee}}
 									par
-									{{item.getRealisateur}}
+									{{film.getRealisateur}}
 								</li>
-								<li>avec
-									{{ item.getPrenom }}
-									{{ item.getNom }}
-									dans le rôle de
-									{{ item.getPersonnage }}</li>
+								{% for role in film.getRoles() %}
 
-
+									<li>avec
+										{{ role.getActeur().getPrenom() }}
+										{{ role.getActeur().getNom() }}
+										dans le rôle de
+										{{ role.getPersonnage }}</li>
+								{% endfor %}
 							</ul>
 
-							<img src="{{item.getAffiche}}" class="w-25" alt="{{item.getTitre}}">
+							<img src="{{film.getAffiche}}" class="w-25" alt="{{film.getTitre}}">
 						</div>
-						{% set newList = newList|merge([item.getId]) %}
+						{% set newList = newList|merge([film.getId]) %}
 					</div>
 
 				{% endif %}
