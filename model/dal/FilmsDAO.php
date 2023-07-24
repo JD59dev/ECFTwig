@@ -37,7 +37,7 @@ class FilmsDAO extends Dao
         } catch (Exception $err) {
             return "ERROR : " . $err->getMessage();
         }
-        return array_values($movies);
+        return ($movies);
         // array_values ne fait que retourner les valeurs du tableau associatif dans un nouveau tableau indexé. on prend le tableau $movies
         // qui contient les objets films et retourne un tableau indexé contenant seulement les objets films et pas les cles [$data['idFilm']]
     }
