@@ -13,7 +13,7 @@ class FilmsDAO extends Dao
             FROM films
             INNER JOIN roles ON films.idFilm = roles.idFilm
             INNER JOIN acteurs ON roles.idActeur = acteurs.idActeur
-            WHERE titre LIKE :titre
+            WHERE LOWER(titre) LIKE :titre
             ORDER BY films.idFilm ASC");
 
             $q->execute([':titre' => "%" . $search . "%"]);
