@@ -55,77 +55,44 @@ class UserDAO extends Dao
         return null;
     }
 
-    public function emptyInputRegister()
+    public function emailExists($email)
     {
         try {
-            $input;
-            if (empty($this->getUserName()) || empty($this->getEmail()) || empty($this->getPassword()) || empty($this->getPwdRepeat())) {
-                $input = false;
-            } else {
-                $input = true;
-            }
+            $query = $this->BDD->prepare('SELECT COUNT(*) AS count FROM users WHERE email = :email');
+            $query->execute([':email' => $email]);
+            $data = $query->fetch();
+            return $data['count'] > 0;
         } catch (Exception $err) {
-            return "ERROR : " . $err->getMessage();
+            return "ERROR: " . $err->getMessage();
         }
-        return $input;
     }
-    public function validUserName()
-    {
-        try {
-            $valid;
-            if (preg_match("/^[a-zA-Z0-9]*$/", $this->getUserName())) {
-                $valid = true;
-            } else {
-                $valid = false;
-            }
-        } catch (Exception $err) {
-            return "ERROR : " . $err->getMessage();
-        }
-        return $valid;
-    }
-    public function validEmail()
-    {
-        try {
-            $valid;
-            if (filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-                $valid = true;
-            } else {
-                $valid = false;
-            }
-        } catch (Exception $err) {
-            return "ERROR : " . $err->getMessage();
-        }
-        return $valid;
-    }
-    private function passwordMatch()
-    {
-        try {
-            $match;
-            if ($this->getPassword() == $this->getPwdRepeat()) {
-                $match = true;
-            } else {
-                $match = false;
-            }
-        } catch (Exception $err) {
-            return "ERROR : " . $err->getMessage();
-        }
-        return $match;
+    public function userNameExists($userName)
+{
+    try {
+        $query = $this->BDD->prepare('SELECT COUNT(*) AS count FROM users WHERE userName = :userName');
+        $query->execute([':userName' => $userName]);
+        $data = $query->fetch();
+        return $data['count'] > 0;
+    } catch (Exception $err) {
+        $this->message = "Erreur : " . $err->getMessage();
+        return false;
     }
 }
-    // public function delete($id)
-    // {
-    //     $query = $this->BDD->prepare('DELETE FROM users WHERE users.id = :id_user');
-    //     $query->execute(array(':id_user' => $id));
-    //     return true;
-    // }
+        
+        
+        
+    
+}
 
-    // public function updateOne($user)
-    // {
-        // $query = $this->BDD->prepare('UPDATE users SET email = :email, password = :password WHERE id = :id');
-        // $query->execute([
-            // ':email' => $user->getEmail(),
-            // ':password' => $user->getPassword(),
-            // ':id' => $user->getId()
-        // ]);
-        // return ($query->rowCount() > 0);
-    // } 
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
