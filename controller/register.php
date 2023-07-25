@@ -6,7 +6,6 @@ $message = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = new User(null, $_POST["newUserName"], $_POST["newEmail"], $_POST["newPassword"], $_POST["rePassword"]);
 
-    $userNameExistsError= $userDao->userNameExists($user->getUserName());
     $emptyInputError = $user->emptyInputRegister();
     $validUserNameError = $user->validUserName();
     $validEmailError = $user->validEmail();
