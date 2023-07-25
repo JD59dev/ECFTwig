@@ -23,7 +23,7 @@ class FilmsDAO extends Dao
 
                 $acteurData = new Acteur($data['idActeur'], $data['nom'], $data['prenom']);
 
-                $roleData = new Role($data['personnage'], $acteurData);
+                $roleData = new Role(null, $data['personnage'], $acteurData);
                 if (!isset($movies[$data['idFilm']])) {
                     $movies[$data['idFilm']] = new Film($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
                 }
@@ -45,8 +45,16 @@ class FilmsDAO extends Dao
         try {
             $values = ['titre' => $data->getTitre(), 'realisateur' => $data->getRealisateur(), 'affiche' => $data->getAffiche(), 'annee' => $data->getAnnee()]; // Initialisation des valeurs pour la requête
 
+
             $q = "INSERT INTO films (titre, realisateur, affiche, annee) 
             VALUES (:titre, :realisateur, :affiche, :annee)"; // Initialisation de la requête
+
+
+            // $acteur = new Acteur(null, $nom, $prenom);
+            // $ajouterActeur = $acteurDao->add($acteur);
+
+            // $role = new Role(null, $roles, $acteur);
+            // $ajouterRole = $roleDao->add($role);
 
             $insert = $this->BDD->prepare($q); // Exécution de la requête
 

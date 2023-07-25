@@ -23,9 +23,6 @@ class ActeurDAO extends Dao
         }
     }
 
-
-
-
     public function getOne($id)
     {
     }

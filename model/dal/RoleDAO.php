@@ -10,8 +10,11 @@ class RoleDAO extends Dao
     public function add($data)
     {
         try {
-            $valeurs = ['personnage' => $data->getPersonnage(), 'acteur' => $data->getActeur()];
-            $requete = 'INSERT INTO roles (personnage, acteur) VALUES (:personnage , :acteur)';
+            $valeurs = ['personnage' => $data->getPersonnage()];
+            $requete = 'INSERT INTO roles (personnage) 
+                SELECT personnage FROM roles
+                INNER JOIN films ON films.idFilm = roles.idFilm
+                INNER JOIN acteurs ON acteur.idActeur = roles.idActeur';
             $insert = $this->BDD->prepare($requete);
             if (!$insert->execute($valeurs)) {
                 return false;
