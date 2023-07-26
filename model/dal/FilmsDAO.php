@@ -1,7 +1,6 @@
 <?php
 class FilmsDAO extends Dao
 {
-    // ...
 
     // Affichage de tous les films réalisés par les réalisateurs et acteurs concernés
     public function getAll($search)
