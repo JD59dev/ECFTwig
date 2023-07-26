@@ -10,7 +10,7 @@ class Film
     private $annee;
     private $roles = [];
 
-    public function __construct(int $id, string $titre, string $realisateur, string $affiche, int $annee, array $roles = null)
+    public function __construct($id, string $titre, string $realisateur, string $affiche, int $annee)
     {
         $this->setId($id);
         $this->setTitre($titre);
@@ -20,15 +20,7 @@ class Film
         $this->roles = [];
     }
 
-    // Méthodes
-    public function addRole(Role $role)
-    {
-        if ($this->roles !== null) {
-            $this->roles[] =  $role;
-        } else {
-            throw new Exception("No role found");
-        }
-    }
+
 
     // GETTERS & SETTERS
 
@@ -130,15 +122,9 @@ class Film
         return $this->roles;
     }
 
-    /**
-     * Set the value of roles
-     *
-     * @return  self
-     */
-    public function setRoles($roles)
+    // Méthodes
+    public function addRole(Role $role)
     {
-        $this->roles = $roles;
-
-        return $this;
+        $this->roles[] = $role;
     }
 }

@@ -8,7 +8,7 @@ class Acteur
     private $prenom;
 
 
-    public function __construct(int $idActeur, string $nom, string $prenom)
+    public function __construct($idActeur, string $nom, string $prenom)
     {
         $this->setIdActeur($idActeur);
         $this->setNom($nom);

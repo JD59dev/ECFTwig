@@ -2,12 +2,14 @@
 
 class Role
 {
+    private $idRole;
     private $personnage;
     private $acteur;
 
 
-    public function __construct(string $personnage, Acteur $acteur)
+    public function __construct($idRole, string $personnage, Acteur $acteur)
     {
+        $this->setIdRole($idRole);
         $this->setPersonnage($personnage);
         $this->setActeur($acteur);
     }
@@ -48,6 +50,26 @@ class Role
     public function setActeur($acteur)
     {
         $this->acteur = $acteur;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idRole
+     */
+    public function getIdRole()
+    {
+        return $this->idRole;
+    }
+
+    /**
+     * Set the value of idRole
+     *
+     * @return  self
+     */
+    public function setIdRole($idRole)
+    {
+        $this->idRole = $idRole;
 
         return $this;
     }

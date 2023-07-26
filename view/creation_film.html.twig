@@ -1,54 +1,67 @@
-<form action="creation_film" method="POST">
-	<div
-		class="container">
+{% if session.email is defined %}
 
-		{# affiche #}
-		<div class="row">
-			<div class="form-group col-md-6">
-				<label for="titre">Titre</label>
-				<input type="text" class="form-control" name="titre">
-			</div>
-			<div class="form-group col-md-6">
-				<label for="annee">Année</label>
-				<input type="text" class="form-control" name="annee">
-			</div>
-		</div><br>
-
-		{# affiche #}
-		<div class="col-12">
-			<div class="form-group col-12">
-				<label for="affiche">Affiche</label>
-				<input type="text" class="form-control" name="affiche">
-			</div>
-		</div><br>
-
-
-		{# realisateur #}
-		<div class="form-group col-md-6">
-			<label for="realisateur">Réalisateur</label>
-			<input type="text" class="form-control" name="realisateur">
-		</div><br>
-
-		{# rôles #}
-		<div class="form-group col-md-12 mb-3">
-			<label for="role">Rôle(s)</label>
-			<div class="row">
-				<div class="col">
-					<input type="text" class="form-control w-100" name="role" placeholder="Personnage">
-				</div>
-				<div class="col">
-					<input type="text" class="form-control w-100" name="nom" placeholder="Nom">
-				</div>
-				<div class="col">
-					<input type="text" class="form-control w-100" name="prenom" placeholder="Prenom">
-				</div>
-			</div>
-		</div><br>
-
+	<form action="creation_film" method="POST">
+		<h1>Ajout d'un film</h1>
 		<div
-			class="text-center mt-4">
-			<!-- Aggiungi un margine superiore più grande per abbassare il bottone -->
-			<button type="submit" class="btn btn-primary">Créer</button>
+			class="container">
+
+			{# affiche #}
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label for="titre">Titre</label>
+					<input type="text" class="form-control" name="titre" required>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="annee">Année</label>
+					<input type="text" class="form-control" name="annee" required>
+				</div>
+			</div><br>
+
+			{# affiche #}
+			<div class="col-12">
+				<div class="form-group col-12">
+					<label for="affiche">Affiche</label>
+					<input type="text" class="form-control" name="affiche" required>
+				</div>
+			</div><br>
+
+
+			{# realisateur #}
+			<div class="form-group col-md-6">
+				<label for="realisateur">Réalisateur</label>
+				<input type="text" class="form-control" name="realisateur" required>
+			</div><br>
+
+			{# rôles #}
+			<div id="newRole" class="form-group col-md-12 mb-3">
+				<label for="role">Rôle(s)</label>
+				<button class=""></button>
+				<div class="row">
+					<div class="col">
+						<input type="text" id="personnage" class="form-control w-100" name="personnage[]" placeholder="Personnage" required>
+					</div>
+					<div class="col">
+						<input type="text" id="nom" class="form-control w-100" name="nom[]" placeholder="Nom" required>
+					</div>
+					<div class="col">
+						<input type="text" id="prenom" class="form-control w-100" name="prenom[]" placeholder="Prenom" required>
+					</div>
+					<div class="col">
+						<button type="submit" id="sup1" class="btn btn-primary mt-4">Supprimer</button>
+					</div>
+					<div class="col">
+						<button type="submit" id="add" class="btn btn-primary mt-4">Ajouter</button>
+					</div>
+				</div>
+			</div><br>
+
+			<div
+				class="text-center mt-4">
+				<!-- Aggiungi un margine superiore più grande per abbassare il bottone -->
+				<button type="submit" class="btn btn-primary">Créer</button>
+			</div>
+			<h5 class="text-danger">{{erreur}}</h5>
 		</div>
-	</div>
-</form></div>
+	</form>
+</div>{% else %}
+<h1 class="text-danger">ERREUR 403 : Accès interdit. Veuillez d'abord vous connecter.</h1>{% endif %}
