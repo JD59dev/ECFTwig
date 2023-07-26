@@ -27,4 +27,9 @@ class SPDO
     {
         return $this->PDOInstance->prepare($query);
     }
+
+    public function getPDO() // Pour utiliser la fonc lastInsertId(), on doit récupérer l'instance de l'objet PDO
+    {
+        return $this->PDOInstance;
+    }
 }

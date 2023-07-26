@@ -20,15 +20,7 @@ class Film
         $this->roles = [];
     }
 
-    // Méthodes
-    public function addRole(Role $role)
-    {
-        if ($this->roles !== null) {
-            $this->roles[] =  $role;
-        } else {
-            throw new Exception("No role found");
-        }
-    }
+
 
     // GETTERS & SETTERS
 
@@ -130,15 +122,9 @@ class Film
         return $this->roles;
     }
 
-    /**
-     * Set the value of roles
-     *
-     * @return  self
-     */
-    public function setRoles($roles)
+    // Méthodes
+    public function addRole(Role $role)
     {
-        $this->roles = $roles;
-
-        return $this;
+        $this->roles[] = $role;
     }
 }

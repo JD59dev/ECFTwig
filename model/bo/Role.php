@@ -3,7 +3,6 @@
 class Role
 {
     private $idRole;
-    private $idFilm;
     private $personnage;
     private $acteur;
 
@@ -71,26 +70,6 @@ class Role
     public function setIdRole($idRole)
     {
         $this->idRole = $idRole;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of idFilm
-     */
-    public function getIdFilm()
-    {
-        return $this->idFilm;
-    }
-
-    /**
-     * Set the value of idFilm
-     *
-     * @return  self
-     */
-    public function setIdFilm($idFilm)
-    {
-        $this->idFilm = $idFilm;
 
         return $this;
     }
