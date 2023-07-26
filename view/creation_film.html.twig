@@ -33,32 +33,27 @@
 			</div><br>
 
 			{# rôles #}
-			<div id="newRole" class="form-group col-md-12 mb-3">
+			<div class="form-group col-md-12 mb-3">
 				<label for="role">Rôle(s)</label>
-				<button class=""></button>
-				<div class="row">
+				<button type="button" id="btnRole" class="btn btn-outline-primary">Ajouter un rôle</button>
+				<div class="row firstRole">
 					<div class="col">
-						<input type="text" id="personnage" class="form-control w-100" name="personnage[]" placeholder="Personnage" required>
+						<input type="text" class="form-control w-100" name="personnage[]" placeholder="Personnage" required>
 					</div>
 					<div class="col">
-						<input type="text" id="nom" class="form-control w-100" name="nom[]" placeholder="Nom" required>
+						<input type="text" class="form-control w-100" name="nom[]" placeholder="Nom" required>
 					</div>
 					<div class="col">
-						<input type="text" id="prenom" class="form-control w-100" name="prenom[]" placeholder="Prenom" required>
-					</div>
-					<div class="col">
-						<button type="submit" id="sup1" class="btn btn-primary mt-4">Supprimer</button>
-					</div>
-					<div class="col">
-						<button type="submit" id="add" class="btn btn-primary mt-4">Ajouter</button>
+						<input type="text" class="form-control w-100" name="prenom[]" placeholder="Prénom" required>
 					</div>
 				</div>
-			</div><br>
+				<div class="row newRole"></div>
+			</div>
 
 			<div
-				class="text-center mt-4">
+				class="text-center mt-4" id="buttons">
 				<!-- Aggiungi un margine superiore più grande per abbassare il bottone -->
-				<button type="submit" class="btn btn-primary">Créer</button>
+				<button id="submit" type="submit" class="btn btn-primary">Créer</button>
 			</div>
 			<h5 class="text-danger">{{erreur}}</h5>
 		</div>

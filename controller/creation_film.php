@@ -1,6 +1,5 @@
 <?php
 
-
 $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['titre']) && isset($_POST['annee'])) {
@@ -19,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['titre']) && isset($_PO
         }
     }
 
-    // Appel e la fonction add pour enregistrer le film, les acteurs et les rôles dans la BDD
+    // Appel de la fonction add pour enregistrer le film, les acteurs et les rôles dans la BDD
     $check = $filmDao->add($film); // Retourne l'id du film ajouté
 
     //var_dump($_POST);

@@ -67,32 +67,15 @@ class UserDAO extends Dao
         }
     }
     public function userNameExists($userName)
-{
-    try {
-        $query = $this->BDD->prepare('SELECT COUNT(*) AS count FROM users WHERE userName = :userName');
-        $query->execute([':userName' => $userName]);
-        $data = $query->fetch();
-        return $data['count'] > 0;
-    } catch (Exception $err) {
-        $this->message = "Erreur : " . $err->getMessage();
-        return false;
+    {
+        try {
+            $query = $this->BDD->prepare('SELECT COUNT(*) AS count FROM users WHERE userName = :userName');
+            $query->execute([':userName' => $userName]);
+            $data = $query->fetch();
+            return $data['count'] > 0;
+        } catch (Exception $err) {
+            return "Erreur : " . $err->getMessage();
+            return false;
+        }
     }
 }
-        
-        
-        
-    
-}
-
-
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
